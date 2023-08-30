@@ -102,10 +102,22 @@ cd alpha_core
 git submodule update --init --recursive
 ```
 
-### Compile the code
-go back to the ROS Workspace dir (e.g., catkin_ws), then do
+### Setting up and Compiling the ROS Workspace with Catkin Tools
+
+In this workspace, we'll be using catkin tools for building and managing your ROS packages. catkin tools is an advanced build tool that offers enhanced features over the traditional catkin_make. Follow the steps below to set up your workspace and compile your ROS packages using catkin tools.
+
+* **Prerequisite**
+Install Catkin Tools: If you don't have catkin tools installed, you can do so using pip:
+
 ```bash
-catkin_make
+pip3 install catkin-tools
+```
+### Build
+
+Now, use catkin build to build your packages. In your workspace directory:
+
+```bash
+catkin build
 ```
 
 ## Quick test
