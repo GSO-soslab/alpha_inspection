@@ -68,6 +68,21 @@
         <child link="surge_thruster_link"/>
     </joint>
 
+    <!-- new front-facing thrusters -->
+    <link name="front_left_thruster_link"/>
+    <joint name="front_left_thruster_joint" type="continuous">
+        <origin xyz="0.0 0.1 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="front_left_thruster_link"/>
+    </joint>
+
+    <link name="front_right_thruster_link"/>
+    <joint name="front_right_thruster_joint" type="continuous">
+        <origin xyz="0.0 -0.1 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="front_right_thruster_link"/>
+    </joint>
+
     <link name="heave_bow_thruster_link"/>
     <joint name="heave_bow_thruster_joint" type="fixed">
         <origin xyz="0.38 0.0 0.0" rpy="0.0 1.57079632679 0.0"/>

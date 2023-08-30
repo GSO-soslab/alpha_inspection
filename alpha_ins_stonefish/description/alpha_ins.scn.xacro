@@ -4,7 +4,7 @@
     Author: Emir Cem Gezer
     Email: emircem@uri.edu;emircem.gezer@gmail.com
     Year: 2022
-    Copyright (C) 2022 Smart Ocean Systems Laboratory
+    Copyright (C) 2023 Smart Ocean Systems Laboratory
 -->
 <scenario xmlns:xacro="http://ros.org/wiki/xacro">
 
@@ -86,6 +86,36 @@
                 <axis xyz="1.0 0.0 0.0"/>
             </joint>
             <!--  -->
+
+           <!-- Add new thrusters at the front of the vehicle -->
+            <link name="FrontLeftThruster" type="box" physics="submerged">
+                <dimensions xyz="0.1 0.02 0.02"/> <!-- Adjust dimensions as needed -->
+                <origin xyz="-1.0 0.1 0.0" rpy="0.0 0.0 0.0"/> <!-- Adjust position as needed -->
+                <material name="Neutral"/>
+                <look name="Black"/> <!-- Adjust color as needed -->
+            </link>
+
+            <link name="FrontRightThruster" type="box" physics="submerged">
+                <dimensions xyz="0.1 0.02 0.02"/> <!-- Adjust dimensions as needed -->
+                <origin xyz="-1.0 -0.1 0.0" rpy="0.0 0.0 0.0"/> <!-- Adjust position as needed -->
+                <material name="Neutral"/>
+                <look name="Black"/> <!-- Adjust color as needed -->
+            </link>
+
+            <!-- Add joints for the servo-controlled thrusters -->
+            <joint name="FrontLeftThrusterJoint" type="continuous">
+                <parent link="Vehicle"/>
+                <child link="FrontLeftThruster"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.0 0.1 0.0"/> <!-- Adjust position as needed -->
+                <axis xyz="0.0 0.0 1.0"/>
+            </joint>
+
+            <joint name="FrontRightThrusterJoint" type="continuous">
+                <parent link="Vehicle"/>
+                <child link="FrontRightThruster"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.0 -0.1 0.0"/> <!-- Adjust position as needed -->
+                <axis xyz="0.0 0.0 1.0"/>
+            </joint>
 
             <actuator name="ThrusterSwayBow" type="thruster">
                 <link name="Base"/>
