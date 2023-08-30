@@ -10,39 +10,39 @@
 -->
 <launch>
 
-    <arg name="robot_name" default="alpha_std"/>
+    <arg name="robot_name" default="alpha_ins"/>
 
     <!--
-        List of the simulated worlds in the 'alpha_std_stonefish'
+        List of the simulated worlds in the 'alpha_ins_stonefish'
     -->
     <arg name="scenario" default="ocean"/>
 
-    <include file="$(find alpha_std_stonefish)/launch/simulation.launch">
+    <include file="$(find alpha_ins_stonefish)/launch/simulation.launch">
         <arg name="robot_name" value="$(arg robot_name)"/>
         <arg name="scenario" value="$(arg scenario)"/>
     </include>
 
     <!-- load urdf vehicle description -->
-    <include file="$(find alpha_std_bringup)/launch/include/description.launch.xml">
+    <include file="$(find alpha_ins_bringup)/launch/include/description.launch.xml">
         <arg name="robot_name" value="$(arg robot_name)"/>
     </include>
 
     <!-- load localization setup -->
-    <include file="$(find alpha_std_bringup)/launch/include/localization.launch.xml">
+    <include file="$(find alpha_ins_bringup)/launch/include/localization.launch.xml">
         <arg name="robot_name" value="$(arg robot_name)"/>
         <arg name="is_sim" value="true"/>
     </include>
 
     <!-- load mvp_control parameters -->
-    <include file="$(find alpha_std_bringup)/launch/include/control.launch.xml">
+    <include file="$(find alpha_ins_bringup)/launch/include/control.launch.xml">
         <arg name="robot_name" value="$(arg robot_name)"/>
     </include>
 
     <!-- load preconfigured rviz -->
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find alpha_std_description)/rviz/config.rviz"/>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find alpha_ins_description)/rviz/config.rviz"/>
 
     <!-- bring up the helm -->
-    <include file="$(find alpha_std_bringup)/launch/bringup_helm.launch">
+    <include file="$(find alpha_ins_bringup)/launch/bringup_helm.launch">
         <arg name="robot_name" value="$(arg robot_name)"/>
     </include>
 

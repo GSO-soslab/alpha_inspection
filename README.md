@@ -17,15 +17,15 @@ This repository includes configuration for standard ALPHA AUV.
 
 
 ## Directory structure
-- `alpha_std_auv`: Meta package for the standard ALPHA AUV.
+- `alpha_ins_auv`: Meta package for the standard ALPHA AUV.
 
-- `alpha_std_bringup`: Launch files to bring the vehicle/simulation up runnning
+- `alpha_ins_bringup`: Launch files to bring the vehicle/simulation up runnning
 
-- `alpha_std_config`: Configuration files for helm, controller, and devices. `mvp_mission` state machine is configured in `/mission/config/helm.yaml`. Parameters for different behaviors program for the helm is located in `/mission/param`. `mvp_control` configuration is under `/config/control.yaml`.
+- `alpha_ins_config`: Configuration files for helm, controller, and devices. `mvp_mission` state machine is configured in `/mission/config/helm.yaml`. Parameters for different behaviors program for the helm is located in `/mission/param`. `mvp_control` configuration is under `/config/control.yaml`.
 
-- `alpha_std_description`: URDF files, rviz configuration, and vehicle mesh
+- `alpha_ins_description`: URDF files, rviz configuration, and vehicle mesh
 
-- `alpha_std_stonefish`: ALPHA scenario files for the `Stonefish` simulator.
+- `alpha_ins_stonefish`: ALPHA scenario files for the `Stonefish` simulator.
 
 
 ## Instllation
@@ -60,10 +60,10 @@ git clone https://github.com/uri-ocean-robotics/stonefish
 
 
 ### Setup ALPHA Standard Repo
-- Clone `alpha_std_auv` repo
+- Clone `alpha_ins_auv` repo
     ```bash
-    git clone https://github.com/GSO-soslab/alpha_std_auv
-    cd alpha_std_auv
+    git clone https://github.com/GSO-soslab/alpha_ins_auv
+    cd alpha_ins_auv
     ```
 
 - Install pip and setup python3 as default
@@ -112,30 +112,30 @@ catkin_make
 - Bring up the ALPHA Standard AUV with the Stonefish simualtor.
 
 ```bash
-roslaunch alpha_std_bringup bringup_simulation.launch
+roslaunch alpha_ins_bringup bringup_simulation.launch
 ```
 
 - Enable the controller in a separated terminal
 ```bash
-rosservice call /alpha_std/controller/enable
+rosservice call /alpha_ins/controller/enable
 ```
 
-- Start a path following mission in local frame where your waypoint is defined in `alpha_std_config/mission/param/path_local.yaml`
+- Start a path following mission in local frame where your waypoint is defined in `alpha_ins_config/mission/param/path_local.yaml`
 
 ```bash
-rosservice call /alpha_std/helm/change_state "state: 'survey_local'"
+rosservice call /alpha_ins/helm/change_state "state: 'survey_local'"
 ```
 
-- OR, try path following in a global frame where your waypoint is defined in latitude and longitude in `alpha_std_config/mission/param/gps_wpt.yaml`
+- OR, try path following in a global frame where your waypoint is defined in latitude and longitude in `alpha_ins_config/mission/param/gps_wpt.yaml`
 
 ```bash
-rosservice call /alpha_std/helm/change_state "state: 'survey_global'"
+rosservice call /alpha_ins/helm/change_state "state: 'survey_global'"
 ```
 
 - You can put AUV in idle anytime by changing the state of the helm
 
 ```bash
-rosservice call /alpha_std/helm/change_state "state: 'start'"
+rosservice call /alpha_ins/helm/change_state "state: 'start'"
 ```
 
 - Note: Make sure you selected the correct topics for the Markers in the RViz window.

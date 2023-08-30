@@ -8,10 +8,10 @@
 -->
 <scenario xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <xacro:include filename="$(find alpha_std_stonefish)/description/looks.scn.xacro"/>
-    <xacro:include filename="$(find alpha_std_stonefish)/description/materials.scn.xacro"/>
+    <xacro:include filename="$(find alpha_ins_stonefish)/description/looks.scn.xacro"/>
+    <xacro:include filename="$(find alpha_ins_stonefish)/description/materials.scn.xacro"/>
 
-    <xacro:macro name="alpha_std" params="xyz rpy robot_name">
+    <xacro:macro name="alpha_ins" params="xyz rpy robot_name">
         <robot name="${robot_name}" fixed="false" self_collisions="false">
 
            

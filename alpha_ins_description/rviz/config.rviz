@@ -133,8 +133,8 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
       Name: RobotModel
-      Robot Description: alpha_std/robot_description
-      TF Prefix: alpha_std
+      Robot Description: alpha_ins/robot_description
+      TF Prefix: alpha_ins
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -143,35 +143,35 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        alpha_std/base_link:
+        alpha_ins/base_link:
           Value: true
-        alpha_std/cg_link:
+        alpha_ins/cg_link:
           Value: true
-        alpha_std/dvl:
+        alpha_ins/dvl:
           Value: true
-        alpha_std/dvl_sf:
+        alpha_ins/dvl_sf:
           Value: true
-        alpha_std/gps:
+        alpha_ins/gps:
           Value: true
-        alpha_std/heave_bow_thruster_link:
+        alpha_ins/heave_bow_thruster_link:
           Value: true
-        alpha_std/heave_stern_thruster_link:
+        alpha_ins/heave_stern_thruster_link:
           Value: true
-        alpha_std/imu:
+        alpha_ins/imu:
           Value: true
-        alpha_std/imu_sf:
+        alpha_ins/imu_sf:
           Value: true
-        alpha_std/odom:
+        alpha_ins/odom:
           Value: true
-        alpha_std/pressure:
+        alpha_ins/pressure:
           Value: true
-        alpha_std/surge_thruster_link:
+        alpha_ins/surge_thruster_link:
           Value: true
-        alpha_std/sway_bow_thruster_link:
+        alpha_ins/sway_bow_thruster_link:
           Value: true
-        alpha_std/world:
+        alpha_ins/world:
           Value: true
-        alpha_std/world_ned:
+        alpha_ins/world_ned:
           Value: true
       Marker Alpha: 1
       Marker Scale: 0.5
@@ -180,38 +180,38 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        alpha_std/odom:
-          alpha_std/base_link:
-            alpha_std/cg_link:
+        alpha_ins/odom:
+          alpha_ins/base_link:
+            alpha_ins/cg_link:
               {}
-            alpha_std/dvl:
+            alpha_ins/dvl:
               {}
-            alpha_std/dvl_sf:
+            alpha_ins/dvl_sf:
               {}
-            alpha_std/gps:
+            alpha_ins/gps:
               {}
-            alpha_std/heave_bow_thruster_link:
+            alpha_ins/heave_bow_thruster_link:
               {}
-            alpha_std/heave_stern_thruster_link:
+            alpha_ins/heave_stern_thruster_link:
               {}
-            alpha_std/imu:
+            alpha_ins/imu:
               {}
-            alpha_std/imu_sf:
+            alpha_ins/imu_sf:
               {}
-            alpha_std/pressure:
+            alpha_ins/pressure:
               {}
-            alpha_std/surge_thruster_link:
+            alpha_ins/surge_thruster_link:
               {}
-            alpha_std/sway_bow_thruster_link:
+            alpha_ins/sway_bow_thruster_link:
               {}
-          alpha_std/world:
-            alpha_std/world_ned:
+          alpha_ins/world:
+            alpha_ins/world_ned:
               {}
       Update Interval: 0
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /alpha_std/helm/path_global/path
+      Marker Topic: /alpha_ins/helm/path_global/path
       Name: Marker
       Namespaces:
         "": true
@@ -219,7 +219,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /alpha_std/helm/path_global/segment
+      Marker Topic: /alpha_ins/helm/path_global/segment
       Name: Marker
       Namespaces:
         "": true
@@ -257,14 +257,14 @@ Visualization Manager:
         Shaft Length: 1
         Shaft Radius: 0.05000000074505806
         Value: Arrow
-      Topic: /alpha_std/odometry/filtered/local
+      Topic: /alpha_ins/odometry/filtered/local
       Unreliable: false
       Value: true
   Enabled: true
   Global Options:
     Background Color: 238; 238; 236
     Default Light: true
-    Fixed Frame: alpha_std/odom
+    Fixed Frame: alpha_ins/odom
     Frame Rate: 30
   Name: root
   Tools:
