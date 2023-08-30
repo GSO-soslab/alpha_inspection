@@ -69,7 +69,7 @@
     </joint>
 
     <!-- new front-facing thrusters -->
-    <link name="front_left_thruster_link"/>
+    <!-- <link name="front_left_thruster_link"/>
     <joint name="front_left_thruster_joint" type="continuous">
         <origin xyz="0.0 0.1 0.0" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
@@ -81,7 +81,7 @@
         <origin xyz="0.0 -0.1 0.0" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="front_right_thruster_link"/>
-    </joint>
+    </joint> -->
 
     <link name="heave_bow_thruster_link"/>
     <joint name="heave_bow_thruster_joint" type="fixed">

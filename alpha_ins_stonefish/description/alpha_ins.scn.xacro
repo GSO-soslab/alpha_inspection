@@ -87,35 +87,94 @@
             </joint>
             <!--  -->
 
-           <!-- Add new thrusters at the front of the vehicle -->
-            <link name="FrontLeftThruster" type="box" physics="submerged">
-                <dimensions xyz="0.1 0.02 0.02"/> <!-- Adjust dimensions as needed -->
-                <origin xyz="-1.0 0.1 0.0" rpy="0.0 0.0 0.0"/> <!-- Adjust position as needed -->
-                <material name="Neutral"/>
-                <look name="Black"/> <!-- Adjust color as needed -->
+            <!-- Start: Starboard Surge -->
+
+            <link name="ThrusterSurgeStarboardDuct" type="compound" physics="submerged">
+                <external_part name="SurgeStarboardDuct" type="model" physics="submerged" buoyant="true">
+                    <physical>
+                        <mesh filename="duct_reduced.obj" scale="0.001"/>
+                        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    </physical>
+                    <visual>
+                        <mesh filename="duct.obj" scale="0.001"/>
+                        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    </visual>
+                    <material name="Neutral"/>
+                    <look name="black"/>
+                    <compound_transform rpy="0.0 -1.57 0.0" xyz="0.0 0.0 0.0"/>
+                </external_part>
             </link>
 
-            <link name="FrontRightThruster" type="box" physics="submerged">
-                <dimensions xyz="0.1 0.02 0.02"/> <!-- Adjust dimensions as needed -->
-                <origin xyz="-1.0 -0.1 0.0" rpy="0.0 0.0 0.0"/> <!-- Adjust position as needed -->
-                <material name="Neutral"/>
-                <look name="Black"/> <!-- Adjust color as needed -->
+            <actuator name="ThrusterSurgeStarboard" type="thruster">
+                <link name="ThrusterSurgeStarboardDuct"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <specs thrust_coeff="0.4315" thrust_coeff_backward="0.3404" torque_coeff="0.01" max_rpm="3000.0"/>
+                <propeller diameter="0.08" right="true">
+                    <mesh filename="prop.obj" scale="1.0"/>
+                    <material name="Neutral"/>
+                    <look name="white"/>
+                </propeller>
+                <ros_subscriber topic="/${robot_name}/control/thruster/surge_starboard"/>
+            </actuator>
+
+            <joint name="surge_starboard_joint" type="revolute">
+                <parent name="Vehicle"/>
+                <child name="ThrusterSurgeStarboardDuct"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.0956 0.165 0.0"/>
+                <axis xyz="0.0 1.0 0.0"/>
+                <limits min="-1.5705" max="1.5705"/>
+            </joint>
+
+            <actuator name="ServoStarboardPort" type="servo">
+                <joint name="surge_starboard_joint"/>
+                <controller position_gain="1.1" velocity_gain="0.1" max_torque="10.0"/>
+            </actuator>
+
+            <!-- End: Starboard Surge -->
+            <!-- Start: Port Surge -->
+
+            <link name="ThrusterSurgePortDuct" type="compound" physics="submerged">
+                <external_part name="SurgePortDuct" type="model" physics="submerged" buoyant="true">
+                    <physical>
+                        <mesh filename="duct_reduced.obj" scale="0.001"/>
+                        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    </physical>
+                    <visual>
+                        <mesh filename="duct.obj" scale="0.001"/>
+                        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    </visual>
+                    <material name="Neutral"/>
+                    <look name="black"/>
+                    <compound_transform rpy="0.0 -1.57 0.0" xyz="0.0 0.0 0.0"/>
+                </external_part>
             </link>
 
-            <!-- Add joints for the servo-controlled thrusters -->
-            <joint name="FrontLeftThrusterJoint" type="continuous">
-                <parent link="Vehicle"/>
-                <child link="FrontLeftThruster"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-1.0 0.1 0.0"/> <!-- Adjust position as needed -->
-                <axis xyz="0.0 0.0 1.0"/>
+            <actuator name="ThrusterSurgePort" type="thruster">
+                <link name="ThrusterSurgePortDuct"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <specs thrust_coeff="0.4315" thrust_coeff_backward="0.3404" torque_coeff="0.01" max_rpm="3000.0"/>
+                <propeller diameter="0.08" right="true">
+                    <mesh filename="prop.obj" scale="1.0"/>
+                    <material name="Neutral"/>
+                    <look name="white"/>
+                </propeller>
+                <ros_subscriber topic="/${robot_name}/control/thruster/surge_port"/>
+            </actuator>
+
+            <joint name="surge_port_joint" type="revolute">
+                <parent name="Vehicle"/>
+                <child name="ThrusterSurgePortDuct"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.0956 -0.165 0.0"/>
+                <axis xyz="0.0 1.0 0.0"/>
+                <limits min="-1.5705" max="1.5705"/>
             </joint>
 
-            <joint name="FrontRightThrusterJoint" type="continuous">
-                <parent link="Vehicle"/>
-                <child link="FrontRightThruster"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-1.0 -0.1 0.0"/> <!-- Adjust position as needed -->
-                <axis xyz="0.0 0.0 1.0"/>
-            </joint>
+            <actuator name="ServoSurgePort" type="servo">
+                <joint name="surge_port_joint"/>
+                <controller position_gain="1.1" velocity_gain="0.1" max_torque="10.0"/>
+            </actuator>
+
+            <!-- End: Port Surge -->
 
             <actuator name="ThrusterSwayBow" type="thruster">
                 <link name="Base"/>
