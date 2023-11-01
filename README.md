@@ -60,7 +60,7 @@ git clone https://github.com/uri-ocean-robotics/stonefish
 
 
 ### Setup ALPHA Standard Repo
-- Clone `alpha_ins_auv` repo
+- Clone `alpha_ins_auv` repo in your ROS Workspace
     ```bash
     git clone https://github.com/GSO-soslab/alpha_ins_auv
     cd alpha_ins_auv
