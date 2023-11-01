@@ -23,10 +23,24 @@
       name="$(arg robot_name)/robot_description"
       command="$(find xacro)/xacro '$(find alpha_ins_description)/urdf/base.urdf.xacro'"/>
 
-  <!-- add prefix on tf -->
-  <node ns="$(arg robot_name)" pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
-    <param name="prefix" value="$(arg robot_name)"/>
-    <param name="tf_prefix" type="string" value="$(arg robot_name)"/>
-  </node>
+  <!-- load joints-->
+  <!-- <param name="robot_description"
+        command="cat '$(find alpha_ins_description)/urdf/joints.urdf'" /> -->
+
+
+  <!-- <param
+      name="robot_description"
+      command="$(find xacro)/xacro '$(find alpha_ins_description)/urdf/base.urdf.xacro'"/> -->
+      
+    <!-- add prefix on tf -->
+    <node ns="$(arg robot_name)" pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+      <param name="prefix" value="$(arg robot_name)"/>
+      <param name="tf_prefix" type="string" value="$(arg robot_name)"/>
+    </node>
+
+    <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" >
+      <param name="use_gui" value="True" />
+    </node> -->
+
 
 </launch>
